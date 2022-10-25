@@ -1,0 +1,23 @@
+%solution of IVP using Laplace transform
+%Laplace Transform 
+Method clc clear all
+syms t s Y y(t)
+a=input("The coeff.of D^2y = "); 
+b=input("The coeff. of Dy = "); 
+c=input("The coeff. of y = "); 
+nh=input("Enter the non-homogenous part = 
+"); eqn = a*diff(y,2)+b*diff(y,1)+c*y-nh 
+LTY=laplace(eqn,t,s); 
+if(a==0) 
+ d=input("The initial value of y at 0 is : 
+"); 
+LTY=subs(LTY,{laplace(y(t),t,s),y(0)},{Y,d}); 
+else d=input("The initial value of y at 0 
+is : "); e=input("The initial value of Dy 
+at 0 is : "); 
+ LTY=subs(LTY,{laplace(y(t),t,s),y(0),subs(diff(y),t,0)},{Y,d,e}); 
+end
+eq=collect(LTY,Y) 
+Y=simplify(solve(eq,Y)); 
+y=simplify(ilaplace(Y,s,t)) 
+ezplot(y)
