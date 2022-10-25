@@ -1,0 +1,27 @@
+clc
+a=input('enter the matrix a')
+n=length(a);
+[X,d]=eig(a);
+fprintf('/n%s','the eigenvalues of a are')
+disp(X)
+option=input('if you want to diagonalize by similarity transformation then press 1 
+or press any no:');
+if(option==1)
+disp('modal matrix associated with a is')
+p=X
+disp('d=inv(p)*a*p')
+d=inv(p)*a*p
+disp('thus a is reduced to the diagonal matrix d though p by similarity 
+transformation.')
+else
+ for i=1:n,
+ x=X(:,i);
+ u(:,i)=x/norm(x);
+ end
+ disp('orthogonal matrix associated with a is matrix ')
+ p1=u(:,1:n);
+ disp('d=transpose(p1)*a*p1')
+ d=(p1)'*a*(p1)
+ disp('thus a is redused to diagonal matrix d through p1 by orthogonal 
+transformation,')
+end
