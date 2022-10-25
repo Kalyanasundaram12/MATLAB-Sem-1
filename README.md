@@ -1,2 +1,2 @@
 # MATLAB-Sem-1
-Matlab codes for Calculus for Engineers
+Matlab codes for Application of Differential and Difference Equation
