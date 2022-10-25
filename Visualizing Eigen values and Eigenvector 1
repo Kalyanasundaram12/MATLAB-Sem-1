@@ -1,0 +1,12 @@
+clc 
+clear all 
+A=input('Enter 3x3 Matrix : '); 
+[P,D]=eig(A) 
+%D is eigen value P is eigen vector
+t=linspace(0,1,20);
+for i=1:3 
+ plot3(P(1,i)*t,P(2,i)*t,P(3,i)*t,"*c") 
+ hold on 
+ plot3(D(i,i)*P(1,i)*t,D(i,i)*P(2,i)*t,D(i,i)*P(3,i)*t,'r.') 
+end
+
