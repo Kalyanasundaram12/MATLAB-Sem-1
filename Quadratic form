@@ -1,0 +1,21 @@
+clc 
+clear all 
+syms x1 x2 x3 y1 y2 y3 
+Q=input('Enter the quadratic form in x1,x2 and x3')
+a11=(1/2)*diff(diff(Q,x1),x1)
+a22=(1/2)*diff(diff(Q,x2),x2)
+a33=(1/2)*diff(diff(Q,x3),x3)
+a12=(1/2)*diff(diff(Q,x1),x2)
+a21=a12 
+a13=(1/2)*diff(diff(Q,x1),x3) 
+a31=a13 
+a23=(1/2)*diff(diff(Q,x2),x3) 
+a32=a23 
+A=[a11 a12 a13;a21 a22 a23;a31 a32 a33] 
+[N,D]=eig(A) 
+X=[x1;x2;x3]
+Y=[y1;y2;y3] 
+disp('The canonical form is') 
+disp(D(1,1)*y1^2+D(2,2)*y2^2+D(3,3)*y3^2) 
+display('no repeated eigen value and the orthogonal transormation is X=NY') 
+X=(N*Y)
