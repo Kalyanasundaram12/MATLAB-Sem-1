@@ -1,0 +1,10 @@
+clc
+clear all 
+A=[1 2;2 4]
+[P,D]=eig(A) %D is eigen value P is eigen vector
+t=linspace(0,1,20);
+for i=1:2 
+plot(P(1,i)*t,P(2,i)*t,"*c") 
+hold on 
+plot(D(i,i)*P(1,i)*t,D(i,i)*P(2,i)*t,'r.') 
+end
