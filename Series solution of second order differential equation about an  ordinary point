@@ -1,0 +1,30 @@
+clc 
+clear all 
+syms x c0 c1 c2 c3 c4 c5
+p1x=1
+input("Coefficient of D^2y: ")
+p2x=-2*x
+input("Coefficient of Dy: ") 
+p3x=1 
+input("Coefficient of y: ")
+c=[c0,c1,c2,c3,c4,c5]
+y=sum(c.*(x).^(0:5))
+dy=diff(y) 
+d2y=diff(dy)
+ode=p1x*d2y+p2x*dy+p3x*y 
+ps=collect(ode,x) 
+d=coeffs(ps,x)
+%coefficients of x in increasing order
+[c2,c3,c4,c5]=solve(d(1),d(2),d(3),d(4),{c2,c3,c4,c5}) 
+%c1 and c0 will came from initial conditions 
+z=subs(y) 
+disp("The general solution of the given ode around x=0 is: ") 
+disp(z) 
+i1=1
+input("Enter y(0): ") 
+i2=1 
+input("Enter dy(0): ") 
+zz=subs(z,[c0,c1],[i1,i2])
+disp("The particular solution is: ")
+disp(zz)
+ezplot(zz,[-4,4]) 
