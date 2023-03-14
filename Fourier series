@@ -1,26 +1,26 @@
-%Fourier series 
-clc
-clear all 
-close all 
-syms x k L U n 
-f=input('Enter the function: '); 
-L=input('Enter the lower limit: ');
-U=input('Enter the upper limit: '); 
-l=(U-L)/2; 
-n=input('Enter the no.of terms required: ');
-ak=@ (f,x,k) int(f*cos(k*pi*x/l)/l,x,L,U); 
-bk=@ (f,x,k) int(f*sin(k*pi*x/l)/l,x,L,U); 
-fs=@ (f,x,n) ak(f,x,0)/2 +symsum(ak(f,x,k)*cos(k*pi*x/l) + 
-bk(f,x,k)*sin(k*pi*x/l),k,l,n);
-pretty(fs(f,x,n)); 
-fst = ak(f,x,0)/2; for i=1:n 
- fst = fst + ak(f,x,i)*cos(i*pi*x/l) + bk(f,x,i)*sin(i*pi*x/l); 
- disp(['Harmonics upto:',num2str(i)]);
- disp(fst); 
- h=ezplot(f,[L,U]); 
- set(h,'LineWidth',2) 
- hold on; 
- h=ezplot(fst,[L,U]); 
- set(h,'LineStyle','-','Color',[i/n l/i l/n],'LineWidth',2); 
- title(['Partial sums up to n=',num2str(i)]) 
+ %Fourier series 
+ clc
+ clear all 
+ close all 
+ syms x k L U n 
+ f=input('Enter the function: '); 
+ L=input('Enter the lower limit: ');
+ U=input('Enter the upper limit: '); 
+ l=(U-L)/2; 
+ n=input('Enter the no.of terms required: ');
+ ak=@ (f,x,k) int(f*cos(k*pi*x/l)/l,x,L,U); 
+ bk=@ (f,x,k) int(f*sin(k*pi*x/l)/l,x,L,U); 
+ fs=@ (f,x,n) ak(f,x,0)/2 +symsum(ak(f,x,k)*cos(k*pi*x/l) + 
+ bk(f,x,k)*sin(k*pi*x/l),k,l,n);
+ pretty(fs(f,x,n)); 
+ fst = ak(f,x,0)/2; for i=1:n 
+  fst = fst + ak(f,x,i)*cos(i*pi*x/l) + bk(f,x,i)*sin(i*pi*x/l); 
+  disp(['Harmonics upto:',num2str(i)]);
+  disp(fst); 
+  h=ezplot(f,[L,U]); 
+  set(h,'LineWidth',2) 
+  hold on; 
+  h=ezplot(fst,[L,U]); 
+  set(h,'LineStyle','-','Color',[i/n l/i l/n],'LineWidth',2); 
+  title(['Partial sums up to n=',num2str(i)]) 
 end
