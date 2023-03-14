@@ -1,5 +1,5 @@
-%solution of IVP using Laplace transform
-%Laplace Transform 
+ %solution of IVP using Laplace transform
+  %Laplace Transform 
 Method clc clear all
 syms t s Y y(t)
 a=input("The coeff.of D^2y = "); 
