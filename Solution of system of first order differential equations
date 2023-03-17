@@ -1,4 +1,4 @@
-clc 
+  clc 
 clear all
 syms x c1 c2
 c=[c1 c2]; 
